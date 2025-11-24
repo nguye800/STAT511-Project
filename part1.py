@@ -73,9 +73,6 @@ df_wine = pd.read_excel("WineConsumption.xlsx")
 # part 3
 # summary statistics table
 # summary_series = {
-#     "Sample1": df_data["Sample1"],
-#     "Sample2": df_data["Sample2"],
-#     "Sample3": df_data["Sample3"],
 #     "Wine": df_wine["Wine"],
 #     "Death rate": df_wine["Death rate"],
 # }
@@ -101,58 +98,58 @@ df_wine = pd.read_excel("WineConsumption.xlsx")
 
 # Question 4
 # box-and-whisker plot for wine and death rate
-# fig, ax = plt.subplots(figsize=(6, 6))
-# box_values = [df_wine["Wine"].dropna()]
-# labels = ["Wine"]
-# flier_props = dict(marker="o", markersize=5, markerfacecolor="black", linestyle="none")
-# ax.boxplot(box_values, labels=labels, whis=1.5, flierprops=flier_props)
-# ax.set_title("Wine - Boxplot (1.5 IQR whiskers)")
-# ax.set_ylabel("Value")
-# plt.tight_layout()
-# plt.show()
+fig, ax = plt.subplots(figsize=(6, 6))
+box_values = [df_wine["Wine"].dropna()]
+labels = ["Wine"]
+flier_props = dict(marker="o", markersize=5, markerfacecolor="black", linestyle="none")
+ax.boxplot(box_values, labels=labels, whis=1.5, flierprops=flier_props)
+ax.set_title("Wine - Boxplot (1.5 IQR whiskers)")
+ax.set_ylabel("Value")
+plt.tight_layout()
+plt.show()
 
-# fig, ax = plt.subplots(figsize=(6, 6))
-# box_values = [df_wine["Death rate"].dropna()]
-# labels = ["Death rate"]
-# flier_props = dict(marker="o", markersize=5, markerfacecolor="black", linestyle="none")
-# ax.boxplot(box_values, labels=labels, whis=1.5, flierprops=flier_props)
-# ax.set_title("Death rate - Boxplot (1.5 IQR whiskers)")
-# ax.set_ylabel("Value")
-# plt.tight_layout()
-# plt.show()
+fig, ax = plt.subplots(figsize=(6, 6))
+box_values = [df_wine["Death rate"].dropna()]
+labels = ["Death rate"]
+flier_props = dict(marker="o", markersize=5, markerfacecolor="black", linestyle="none")
+ax.boxplot(box_values, labels=labels, whis=1.5, flierprops=flier_props)
+ax.set_title("Death rate - Boxplot (1.5 IQR whiskers)")
+ax.set_ylabel("Value")
+plt.tight_layout()
+plt.show()
 
 # scatter plot showing correlation between wine consumption and death rate
-# r_value = df_wine["Wine"].corr(df_wine["Death rate"])
-# fig, ax = plt.subplots(figsize=(7, 6))
-# ax.scatter(df_wine["Wine"], df_wine["Death rate"], color="tab:blue", edgecolors="black")
-# ax.set_xlabel("Wine consumption")
-# ax.set_ylabel("Death rate")
-# ax.set_title("Wine vs Death Rate Scatter Plot")
-# ax.text(
-#     0.05,
-#     0.95,
-#     f"r = {r_value:.3f}",
-#     transform=ax.transAxes,
-#     ha="left",
-#     va="top",
-#     bbox=dict(facecolor="white", alpha=0.8, edgecolor="black"),
-# )
-# plt.tight_layout()
-# plt.show()
+r_value = df_wine["Wine"].corr(df_wine["Death rate"])
+fig, ax = plt.subplots(figsize=(7, 6))
+ax.scatter(df_wine["Wine"], df_wine["Death rate"], color="tab:blue", edgecolors="black")
+ax.set_xlabel("Wine consumption")
+ax.set_ylabel("Death rate")
+ax.set_title("Wine vs Death Rate Scatter Plot")
+ax.text(
+    0.05,
+    0.95,
+    f"r = {r_value:.3f}",
+    transform=ax.transAxes,
+    ha="left",
+    va="top",
+    bbox=dict(facecolor="white", alpha=0.8, edgecolor="black"),
+)
+plt.tight_layout()
+plt.show()
 
 
 # covariance calculation with numerator and denominator output
-aligned = df_wine[["Wine", "Death rate"]].dropna()
-wine = aligned["Wine"]
-death = aligned["Death rate"]
-x_bar = wine.mean()
-y_bar = death.mean()
-numerator = ((wine - x_bar) * (death - y_bar)).sum()
-N = len(aligned)
-denominator = N - 1
-covariance = numerator / denominator
+# aligned = df_wine[["Wine", "Death rate"]].dropna()
+# wine = aligned["Wine"]
+# death = aligned["Death rate"]
+# x_bar = wine.mean()
+# y_bar = death.mean()
+# numerator = ((wine - x_bar) * (death - y_bar)).sum()
+# N = len(aligned)
+# denominator = N - 1
+# covariance = numerator / denominator
 
-print(f"Numerator sum((x_i - x_bar)*(y_i - y_bar)): {numerator:.3f}")
-print(f"Denominator N-1: {denominator}")
-print(f"Sample covariance: {covariance:.3f}")
+# print(f"Numerator sum((x_i - x_bar)*(y_i - y_bar)): {numerator:.3f}")
+# print(f"Denominator N-1: {denominator}")
+# print(f"Sample covariance: {covariance:.3f}")
    
